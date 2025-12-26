@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Job Advertisement | Sakhi: One Stop Centre</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(120deg, #f4f6f9 0%, #e3e9f7 100%);
+      color: #222;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #2a3a5e;
+      color: #fff;
+      padding: 32px 0 24px 0;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(42,58,94,0.08);
+      margin-bottom: 32px;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    header h2 {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #cfd8e3;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto 40px auto;
+      padding: 0 16px;
+    }
+
+    .job-card {
+      background: #fff;
+      padding: 32px 24px;
+      border-radius: 14px;
+      box-shadow: 0 8px 32px rgba(42,58,94,0.10);
+      margin-bottom: 32px;
+      transition: box-shadow 0.3s;
+    }
+    .job-card:hover {
+      box-shadow: 0 12px 40px rgba(42,58,94,0.16);
+    }
+
+    .job-header {
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .job-header h1 {
+      font-size: 1.7rem;
+      color: #2a3a5e;
+      margin-bottom: 6px;
+    }
+    .job-header h2 {
+      font-size: 1.1rem;
+      color: #4e5d78;
+      margin-bottom: 4px;
+    }
+    .job-header p {
+      color: #7a869a;
+      font-size: 1rem;
+    }
+
+    .job-details h2 {
+      font-size: 1.15rem;
+      margin: 22px 0 10px;
+      color: #2a3a5e;
+      font-weight: 600;
+    }
+    .job-details ul, .job-details ol {
+      padding-left: 22px;
+      margin-bottom: 10px;
+    }
+    .job-details li {
+      margin-bottom: 7px;
+      font-size: 1rem;
+    }
+    .job-details p {
+      margin-bottom: 8px;
+    }
+
+    .apply-section {
+      background: #f8fafc;
+      padding: 28px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(42,58,94,0.06);
+      margin-bottom: 32px;
+    }
+    .apply-section h2 {
+      margin-bottom: 18px;
+      color: #2a3a5e;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #2a3a5e;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #cfd8e3;
+      font-size: 15px;
+      background: #f4f6f9;
+      color: #222;
+      transition: border 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border: 1.5px solid #2a3a5e;
+      outline: none;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #2a3a5e 0%, #b71c1c 100%);
+      color: #fff;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(42,58,94,0.10);
+      letter-spacing: 0.5px;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+      outline: none;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+    .btn:focus {
+      box-shadow: 0 0 0 3px #b71c1c44;
+    }
+    .btn:hover {
+      background: linear-gradient(90deg, #b71c1c 0%, #2a3a5e 100%);
+      box-shadow: 0 8px 24px rgba(42,58,94,0.18);
+      filter: brightness(1.08);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #7a869a;
+      font-size: 15px;
+      padding-bottom: 24px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .container {
+        max-width: 98vw;
+        padding: 0 8px;
+      }
+      .job-card, .apply-section {
+        padding: 20px 8px;
+      }
+    }
+    @media (max-width: 600px) {
+      header {
+        padding: 22px 0 14px 0;
+      }
+      header h1 {
+        font-size: 1.2rem;
+      }
+      .job-header h1 {
+        font-size: 1.1rem;
+      }
+      .job-header h2 {
+        font-size: 1rem;
+      }
+      .job-card, .apply-section {
+        padding: 12px 2px;
+        border-radius: 7px;
+      }
+      .job-details h2 {
+        font-size: 1rem;
+      }
+      .btn {
+        padding: 10px 16px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <header>
+    <h1>OFFICE OF THE DISTRICT SOCIAL WELFARE OFFICER, CHARAIDEO</h1>
+    <h2>Online Applications Invited for Various Posts at Sakhi: One Stop Centre, Charaideo</h2>
+    <div style="font-size: 1rem; color: #e3e9f7; margin-top: 6px;">(Under Mission Shakti, Ministry of Women & Child Development, Government of India)</div>
+  </header>
+
+  <div class="container">
+    <!-- Job Advertisement -->
+    <div class="job-card">
+        <div class="job-header">
+        <h1>Job Advertisement</h1>
+            <p><b>Various Posts at Sakhi: One Stop Centre, Charaideo</b></p>
+            <p style="text-align: justify;">For wide publicity, this is to inform all eligible and interested candidates that the Sakhi One Stop Centre, Charaideo is inviting online applications for several purely temporary and contractual positions. The recruitment is open to candidates who are permanent residents of Assam and citizens of India as per Articles 5 to 9 of the Constitution of India.</p>
+        </div>
+      <div class="job-details">
+        <h2>Available Posts (Online Application Only)</h2>
+        <ol>
+          <li>Centre Administrator</li>
+          <li>Counsellor</li>
+          <li>Case Worker</li>
+          <li>Multi-Purpose Worker</li>
+          <li>Multi-Purpose Worker</li>
+        </ol>
+      </div>
+      <div class="job-details">
+        <h2>Application Dates</h2>
+        <ul>
+          <li>Starting Date: 20/11/2025</li>
+          <li>Closing Date: 29/12/2025</li>
+        </ul>
+
+        <button class="btn">Apply Now</button>
+
+        <h2>Eligibility Criteria (General)</h2>
+        <ul>
+          <li>Be a citizen of India and a permanent resident of Assam</li>
+          <li>Be between 21 to 38 years of age as on 01/01/2025</li>
+          <li>Age relaxation:
+            <ul>
+              <li>5 years for SC, ST(P), ST(H)</li>
+              <li>As per norms for PwD candidates</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h2>Documents to Be Uploaded</h2>
+        <p>Candidates must upload the following documents while submitting their online application:</p>
+        <ol>
+          <li>Filled-in Application Form</li>
+          <li>Educational Qualification Certificates & Mark Sheets</li>
+          <li>Age Proof</li>
+          <li>Voter ID / Residential Proof</li>
+          <li>Work Experience Certificates (if applicable)</li>
+          <li>Caste Certificate (if claiming relaxation)</li>
+          <li>NOC from employer (if currently employed)</li>
+          <li>Self-attested photograph (as per application form)</li>
+        </ol>
+
+        <h2>Place of Posting</h2>
+        <p>Selected candidates will be posted at:</p>
+        <ul>
+          <li>Sakhi One Stop Centre, Charaideo <br> (Under Mission Shakti, MoWCD, Government of India)</li>
+        </ul>
+
+        <h2>Selection Process</h2>
+        <ul>
+          <li>Only shortlisted candidates will be informed</li>
+          <li>Communication will be sent only through email</li>
+          <li>No separate call letters will be issued</li>
+          <li>No TA/DA will be provided for attending the walk-in interview</li>
+        </ul>
+
+        <h2>Application Form</h2>
+        <button class="btn">Click here</button>
+      </div>
+    </div>
+    
+
+    <footer>
+      © 2025 MoWCD | Mission Shakti <br>
+      For any queries after submission, please contact us at <a href="mailto:osccharaideo2025@gmail.com" style="color:#b71c1c; text-decoration:underline;">osccharaideo2025@gmail.com</a>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("jobForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+
+      if (name && email) {
+        alert("Thank you, " + name + "! Your application has been submitted.");
+        this.reset();
+      } else {
+        alert("Please fill all required fields.");
+      }
+    });
+  </script>
+
+</body>
+</html>
